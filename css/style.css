@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  background: #202020;
+  font-family: 'Inconsolata', monospace;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu {
+  position:absolute;
+  z-index: 10;
+  top: 0px;
+  left: -150px;
+  width: 150px;
+}
+
+.title {
+  background: white;
+  text-align: center;
+  line-height: 50px;
+  border: 1px solid #202020;
+}
+
+#aboutBtn,
+#projectsBtn,
+#contactBtn {
+  background: lightgrey;
+  padding-left: 35px;
+  line-height: 50px;
+  border: 1px solid #202020;
+  cursor: pointer;
+}
+
+.menu i {
+  position: absolute;
+  margin-left: 160px;
+  color: white;
+  cursor: pointer;
+}
+.splash-about,
+.splash-contact,
+.splash-projects {
+  z-index: 10;
+  background-color: white;
+  opacity: 0.9;
+  position: fixed;
+  display: none;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.exitBtn {
+  position: fixed;
+  top: 0px;
+  right: -35px;
+  color: whitesmoke;
+  cursor: pointer;
+}
+
+.contact-content,
+.about-content {
+  position: relative;
+  width: 60%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.projectsCar {
+  z-index: 100;
+  width: 60%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 20px;
+}
+
+.frame {
+  display: flex;
+  flex-direction: row;
+}
+
+.words {
+  padding-left: 10px;
+}
+
+.tab {
+  margin-left: 20px;
+}
+
+.tab2 {
+  margin-left: 40px;
+}
+
+.tab3 {
+  margin-left: 60px;
+}
+
+.tab4 {
+  margin-left: 80px;
+}
+
+.container {
+  display: inline-block;
+  height: 100vh;
+  width: 100vw;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: 50vh;
+  margin-left: 50vw;
+  transform: translate(-50%, -50%);
+}
+
+.main {
+  position: relative;
+  line-height: 22px;
+  display: flex;
+  flex-direction: row;
+}
+
+.lineNums {
+  text-align: right;
+  color: #404040;
+  background: #303030;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+  padding-left: 5px;
+  min-height: 70vh;
+  width: 16px;
+}
+
+.notepad {
+  color: #808080;
+  background: #303030;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-left: 15px;
+  min-height: 70vh;
+  width: 60vw;
+  max-width: 800px;
+}
+
+.input {
+  padding-top: 5px;
+}
+
+#chev {
+  position: fixed;
+  font-size: 12px;
+  margin-top: 6px;
+  margin-left: 5px;
+  color: blue;
+}
+
+input {
+  width: calc(100% - 21px);
+  max-width: 816px;
+  background: whitesmoke;
+  border: 1px;
+  padding-left: 20px;
+  line-height: 22px;
+  font-family: 'Inconsolata', monospace;
+  color: #606060;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+}
+
+
+.purple {
+  color: #BF76D9;
+}
+
+.cy {
+  color: #47A3B0;
+}
+
+.blue {
+  color: #5AA8D6;
+}
