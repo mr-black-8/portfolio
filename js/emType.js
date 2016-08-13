@@ -1,7 +1,7 @@
 (function($){
   $.fn.typeAppend = function(string, callback) {
     // define delay variable with inital value randomized
-    var delay = 500;
+    var delay = 150;
 
     // function to apend given character to given element
     function appendLetter(el, char) {
@@ -11,7 +11,7 @@
     // Loop through string and set timeout to call appendLetter on each character, increasing the delay with each iteration
     for( i = 0; i < string.length; i++ ) {
       setTimeout(appendLetter, delay, this, string[i]);
-      delay += (Math.random() * 100);
+      delay += (Math.random() * 75);
     }
     // set timeout for callback function with final delay value
     setTimeout(callback, delay);

@@ -11,10 +11,18 @@ a {
 
 .menu {
   position:absolute;
-  z-index: 10;
+  z-index: 150;
   top: 0px;
   left: -150px;
   width: 150px;
+}
+
+header img {
+  position: absolute;
+  z-index: 100;
+  height: 70px;
+  top: 25px;
+  left: 15px;
 }
 
 .title {
@@ -36,6 +44,7 @@ a {
 
 .menu i {
   position: absolute;
+  margin-top: 5px;
   margin-left: 160px;
   color: white;
   cursor: pointer;
@@ -45,7 +54,7 @@ a {
 .splash-projects {
   z-index: 10;
   background-color: white;
-  opacity: 0.9;
+  /*opacity: 0.9;*/
   position: fixed;
   display: none;
   align-items: center;
@@ -71,6 +80,27 @@ a {
   transform: translate(-50%);
 }
 
+.contact-content h3 {
+  text-align: center;
+}
+
+.contact-content ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+.contact-content li {
+  padding: 2px;
+}
+
+.contact-content li:first-child i {
+  margin-left: -32px;
+}
+
+.contact-content li:nth-child(2) i {
+  margin-left: -8px;
+}
+
 .projectsCar {
   z-index: 100;
   width: 60%;
@@ -82,6 +112,11 @@ a {
 .frame {
   display: flex;
   flex-direction: row;
+}
+
+.frame img {
+  align-self: center;
+  height: 200px;
 }
 
 .words {
@@ -116,6 +151,7 @@ a {
   margin-top: 50vh;
   margin-left: 50vw;
   transform: translate(-50%, -50%);
+  max-width: 700px;
 }
 
 .main {
@@ -133,7 +169,6 @@ a {
   border-bottom: 1px solid black;
   border-left: 1px solid black;
   padding-left: 5px;
-  min-height: 70vh;
   width: 16px;
 }
 
@@ -144,9 +179,9 @@ a {
   border-right: 1px solid black;
   border-bottom: 1px solid black;
   padding-left: 15px;
-  min-height: 70vh;
+  /*min-height: 70vh;*/
   width: 60vw;
-  max-width: 800px;
+  max-width: 650px;
 }
 
 .input {
@@ -162,8 +197,8 @@ a {
 }
 
 input {
-  width: calc(100% - 21px);
-  max-width: 816px;
+  width: calc(100% - 20px);
+  max-width: 666px;
   background: whitesmoke;
   border: 1px;
   padding-left: 20px;
@@ -177,6 +212,20 @@ input:focus {
   outline: none;
 }
 
+.console {
+  width: 100%;
+  max-width: 666px;
+  line-height: 22px;
+  font-family: 'Inconsolata', monospace;
+  color: maroon;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.5s linear;
+}
+
+.console i {
+  padding: 0px 6px 0px 3px;
+}
 
 .purple {
   color: #BF76D9;

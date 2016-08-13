@@ -1,9 +1,13 @@
+var inputHistory = [];
+var historyCount = 0;
+var tempInput = '';
+
 $(document).ready( function() {
 
   $('#1').typeAppend('var Michael = {', function(){
     $('#2').typeAppend('about: function() {', function(){
       $('#3').typeAppend('if( currentUser.approved === true ) {', function(){
-        $('#4').typeAppend('display( awsomeBlurb );', function(){
+        $('#4').typeAppend('display( awesomeBlurb );', function(){
           $('#5').typeAppend('} else {', function(){
             $('#6').typeAppend('display( "currentUser not yet approved" )', function(){
               $('#7').typeAppend('}', function(){
@@ -60,7 +64,6 @@ $(document).ready( function() {
     } else {
       showMenu();
     }
-
   });
 
   $('.exitBtn').on('click', function(){
@@ -86,43 +89,108 @@ $(document).ready( function() {
 
   $('.main').resize( checkLines );
 
-
   $('.projectsCar').slick({
     arrows: true,
     dots: true,
     infinite: true,
     speed: 300,
     slidesToShow: 1,
-    adaptiveHeight: true
+    adaptiveHeight: true,
+  });
+
+  // up: 38
+  // down: 40
+  $('input').on('keydown', function(e){
+    if(e.which === 8) {
+      tempInput = tempInput.slice(0, -1);
+    }
+
+    if(e.which === 38) {
+      e.preventDefault()
+      if(inputHistory.length > 0) {
+        if(historyCount < inputHistory.length) {
+          historyCount += 1;
+        }
+        this.value = inputHistory[historyCount - 1];
+      }
+    }
+    if(e.which === 40) {
+      e.preventDefault()
+      if(historyCount > 1) {
+        historyCount -= 1
+        this.value = inputHistory[historyCount - 1];
+      } else if(historyCount === 1) {
+        historyCount -= 1
+        this.value = tempInput;
+      } else {
+        this.value = tempInput;
+      }
+    }
   });
 
   $('input').on('keypress', function(e){
-    if(e.which === 13) {
-      var input = this.value
-      switch (this.value) {
-        case 'Michael.about()':
-          this.value = '';
-          $('.splash-about').css('display', 'flex');
-          break;
-        case 'Michael.gallery()':
-          this.value = '';
-          $('.splash-projects').css('display', 'flex');
-          $('.projectsCar').slick('setPosition');
-          break;
-        case 'Michael.contact()':
-          this.value = '';
-          $('.splash-contact').css('display', 'flex');
-          break;
-        default:
-
-      }
+    if(e.which > 30 && e.which < 127) {
+      tempInput += e.key;
     }
-  })
+    if(e.which === 13) {
+      tempInput = '';
+      inputHistory.unshift(this.value);
+      historyCount = 0;
+      var input = this.value.replace(/(;$)/, '');
+      this.value = '';
 
+      var scriptCheck = /(<script>)|([</>])/g.test(input);
+      var sayCheck = /(^Michael\.say\(['"])/.test(input);
+      var displayCheck = /(^display)/.test(input);
+
+      if (scriptCheck) {
+        showError('Don\'t try any funny business...');
+      } else if (displayCheck) {
+        showError('Access has been restricted');
+      } else if (sayCheck) {
+        input = input.replace(/(^Michael\.say\(['"])/, '');
+        input = input.replace(/(['"]\)$)/, '')
+        showSay(input);
+      } else {
+        switch (input) {
+          case 'Michael.about()':
+            $('.splash-about').css('display', 'flex');
+            break;
+          case 'Michael.gallery()':
+            $('.splash-projects').css('display', 'flex');
+            $('.projectsCar').slick('setPosition');
+            break;
+          case 'Michael.contact()':
+            $('.splash-contact').css('display', 'flex');
+            break;
+          case 'Michael':
+          case 'display':
+          case 'awesomeBlurb':
+          case 'currentUser':
+          case 'projects':
+          case 'contactDetails':
+            showError('Access has been restricted');
+            break;
+          default:
+            var msg = 'Uncaught ReferenceError: ' + input + ' is not defined'
+            showError(msg);
+            break;
+        }
+      }
+
+      $('header img').css('display', 'none');
+    }
+  });
+});
+
+$(document).on('keydown', function(e){
+  if (e.which === 27) {
+    clearSplash();
+  }
 });
 
 function checkLines() {
-  padHeight = $('.lineNums').css('height');
+  padHeight = $('.noteContent').css('height');
   lines = parseInt(padHeight) / 22;
   $('.lineNums').text('');
   for(var i = 1; i <= lines; i++) {
@@ -137,6 +205,7 @@ function clearSplash() {
 }
 
 function showMenu() {
+  $('header img').css('display', 'none');
   $('.menu').css('left', '0px');
   $('#menuBtn').removeClass('fa-bars fa-2x').addClass('fa-times fa-2x');
 }
@@ -144,4 +213,34 @@ function showMenu() {
 function hideMenu() {
   $('.menu').css('left', '-150px');
   $('#menuBtn').removeClass('fa-times fa-2x').addClass('fa-bars fa-2x');
+}
+
+function showError(msg) {
+  var $cross = $('<i class="fa fa-times-circle" aria-hidden="true"></i>')
+  var text = document.createTextNode(msg);
+  $('.console').html('');
+  $('.console').append($cross, text);
+  $('.console').css('color', 'maroon');
+  $('.console').css('opacity', '1');
+  window.setTimeout(function(){
+    $('.console').css('opacity', '0');
+  }, 5000);
+  window.setTimeout(function(){
+    $('.console').html('-');
+  }, 6000);
+}
+
+function showSay(msg) {
+  var $tick = $('<i class="fa fa-commenting" aria-hidden="true"></i>')
+  var text = document.createTextNode(msg);
+  $('.console').html('');
+  $('.console').append($tick, text);
+  $('.console').css('color', 'palegreen');
+  $('.console').css('opacity', '1');
+  window.setTimeout(function(){
+    $('.console').css('opacity', '0');
+  }, 5000);
+  window.setTimeout(function(){
+    $('.console').html('-');
+  }, 6000);
 }
