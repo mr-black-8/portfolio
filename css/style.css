@@ -49,6 +49,11 @@ header img {
   color: white;
   cursor: pointer;
 }
+
+.splash-mobile {
+  display: none;
+}
+
 .splash-about,
 .splash-contact,
 .splash-projects {
@@ -237,4 +242,65 @@ input:focus {
 
 .blue {
   color: #5AA8D6;
+}
+
+@media (max-width: 768px) {
+  header img,
+  .content {
+    display: none;
+  }
+
+  .menu {
+    position: relative;
+    left: 5vw;
+    width: 90vw;
+
+  }
+
+  .menu i {
+    left: 75vw;
+    margin-top:10px;
+    margin-left:0px;
+    color: black;
+  }
+
+  #aboutBtn,
+  #projectsBtn,
+  #contactBtn {
+    display: none;
+  }
+
+  .splash-mobile {
+    z-index: 1;
+    color: #606060;
+    background-color: #202020;
+    position: fixed;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    height: 50%;
+    width: 80%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .splash-about,
+  .splash-contact,
+  .splash-projects {
+    z-index: 10;
+    background-color: white;
+    position: fixed;
+    display: none;
+    align-items: center;
+    width: 95%;
+  }
+  .projectsCar {
+    z-index: 100;
+    padding: 20px;
+  }
+
+  .frame img {
+    display: none;
+  }
 }

@@ -59,10 +59,18 @@ $(document).ready( function() {
   })
 
   $('#menuBtn').on('click', function(){
-    if($('.menu').css('left') == '0px') {
-      hideMenu();
+    if(parseInt($('.menu').css('left')) > 0) {
+      if($('#aboutBtn').css('display') == 'block') {
+        hideMenu();
+      } else {
+        showMenu();
+      }
     } else {
-      showMenu();
+      if($('.menu').css('left') == '0px') {
+        hideMenu();
+      } else {
+        showMenu();
+      }
     }
   });
 
@@ -77,9 +85,9 @@ $(document).ready( function() {
   });
   $('#projectsBtn').on('click', function(){
     clearSplash();
+    hideMenu();
     $('.splash-projects').css('display', 'flex');
     $('.projectsCar').slick('setPosition');
-    hideMenu();
   });
   $('#contactBtn').on('click', function(){
     clearSplash();
@@ -87,19 +95,19 @@ $(document).ready( function() {
     hideMenu();
   });
 
-  $('.main').resize( checkLines );
+  if($(window).width() > 768){
+    $('.main').resize( checkLines );
 
-  $('.projectsCar').slick({
-    arrows: true,
-    dots: true,
-    infinite: true,
-    speed: 300,
-    slidesToShow: 1,
-    adaptiveHeight: true,
-  });
+    $('.projectsCar').slick({
+      arrows: true,
+      dots: true,
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+    });
+  }
 
-  // up: 38
-  // down: 40
   $('input').on('keydown', function(e){
     if(e.which === 8) {
       tempInput = tempInput.slice(0, -1);
@@ -205,14 +213,23 @@ function clearSplash() {
 }
 
 function showMenu() {
-  $('header img').css('display', 'none');
-  $('.menu').css('left', '0px');
-  $('#menuBtn').removeClass('fa-bars fa-2x').addClass('fa-times fa-2x');
+  if(!(parseInt($('.menu').css('left')) > 0)) {
+    $('header img').css('display', 'none');
+    $('.menu').css('left', '0px');
+    $('#menuBtn').removeClass('fa-bars fa-2x').addClass('fa-times fa-2x');
+  } else {
+    $('#aboutBtn, #projectsBtn, #contactBtn').css('display', 'block')
+  }
 }
 
 function hideMenu() {
-  $('.menu').css('left', '-150px');
-  $('#menuBtn').removeClass('fa-times fa-2x').addClass('fa-bars fa-2x');
+  if(!(parseInt($('.menu').css('left')) > 0)) {
+    $('.menu').css('left', '-150px');
+    $('#menuBtn').removeClass('fa-times fa-2x').addClass('fa-bars fa-2x');
+  } else {
+    $('#aboutBtn, #projectsBtn, #contactBtn').css('display', 'none')
+  }
+
 }
 
 function showError(msg) {
