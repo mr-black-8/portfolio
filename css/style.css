@@ -9,6 +9,11 @@ a {
   color: inherit;
 }
 
+header {
+  position: fixed;
+  z-index: 150;
+}
+
 .menu {
   position:absolute;
   z-index: 150;
@@ -232,6 +237,13 @@ input:focus {
   padding: 0px 6px 0px 3px;
 }
 
+.popup {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translate(0%, -50%);
+}
+
 .purple {
   color: #BF76D9;
 }
@@ -298,6 +310,10 @@ input:focus {
   .projectsCar {
     z-index: 100;
     padding: 20px;
+    transform: translate(0);
+    overflow: scroll;
+    height: 100%;
+    width: 100%;
   }
 
   .frame img {

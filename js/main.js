@@ -171,6 +171,15 @@ $(document).ready( function() {
           case 'Michael.contact()':
             $('.splash-contact').css('display', 'flex');
             break;
+          case 'Michael.tentacles()':
+          case 'tentacles()':
+            var randomTentSrc = randomTentacleGif();
+            showPopUp(randomTentSrc);
+            break;
+          case 'Michael.dickbutt()':
+          case 'dickbutt()':
+            showPopUp('http://i.imgur.com/Ss2nCqU.png');
+            break;
           case 'Michael':
           case 'display':
           case 'awesomeBlurb':
@@ -260,4 +269,25 @@ function showSay(msg) {
   window.setTimeout(function(){
     $('.console').html('-');
   }, 6000);
+}
+
+function showPopUp(src) {
+  $('.popup img').attr('src', src)
+  $('.popup').css('display', 'block');
+  window.setTimeout(function() {
+    $('.popup').css('display', 'none');
+    $('.popup').attr('src', '');
+  }, 4000);
+}
+
+function randomTentacleGif() {
+  var tentArr = [
+    'http://i.imgur.com/PPwrJ4x.gif',
+    'http://i.imgur.com/PPwrJ4x.gif',
+    'http://i.imgur.com/PPwrJ4x.gif',
+    'http://i.imgur.com/CKTVkeW.gif',
+    'http://i.imgur.com/ypkvIdn.gif'
+  ];
+  var x = Math.floor(Math.random() * tentArr.length);
+  return tentArr[x];
 }
