@@ -67,16 +67,12 @@ header img {
   /*opacity: 0.9;*/
   position: fixed;
   display: none;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-              -ms-grid-row-align: center;
-          align-items: center;
+  align-items: center;
   height: 80%;
   width: 80%;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 .exitBtn {
   position: fixed;
@@ -91,8 +87,7 @@ header img {
   position: relative;
   width: 60%;
   left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
+  transform: translate(-50%);
 }
 
 .contact-content h3 {
@@ -120,24 +115,17 @@ header img {
   z-index: 100;
   width: 60%;
   left: 50%;
-  -webkit-transform: translate(-50%);
-          transform: translate(-50%);
+  transform: translate(-50%);
   padding: 20px;
 }
 
 .frame {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .frame img {
-  -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   height: 200px;
 }
 
@@ -168,30 +156,19 @@ header img {
 }
 
 .content {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   margin-top: 50vh;
   margin-left: 50vw;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   max-width: 700px;
 }
 
 .main {
   position: relative;
   line-height: 22px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .lineNums {
@@ -253,7 +230,6 @@ input:focus {
   color: maroon;
   font-size: 14px;
   opacity: 0;
-  -webkit-transition: opacity 0.5s linear;
   transition: opacity 0.5s linear;
 }
 
@@ -265,8 +241,7 @@ input:focus {
   display: none;
   position: absolute;
   top: 50%;
-  -webkit-transform: translate(0%, -50%);
-          transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
 }
 
 .purple {
@@ -312,19 +287,14 @@ input:focus {
     color: #606060;
     background-color: #202020;
     position: fixed;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     text-align: center;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    align-items: center;
     height: 50%;
     width: 80%;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 
   .splash-about,
@@ -334,17 +304,13 @@ input:focus {
     background-color: white;
     position: fixed;
     display: none;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-                -ms-grid-row-align: center;
-            align-items: center;
+    align-items: center;
     width: 95%;
   }
   .projectsCar {
     z-index: 100;
     padding: 20px;
-    -webkit-transform: translate(0);
-            transform: translate(0);
+    transform: translate(0);
     overflow: scroll;
     height: 100%;
     width: 100%;
